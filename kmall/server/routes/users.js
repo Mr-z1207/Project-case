@@ -35,6 +35,22 @@ const router = Router();
 // 	})
 // })
 //********************************************************************
+//********************************************************************
+/*router.get('/init',(req,res)=>{
+	UserModel.insertMany({
+	   	username:"admin",
+		password:hmac("admin"),
+		isAdmin:true
+})
+	.then(result=>{
+		res.send('ok')
+	})
+	.catch(err=>{
+		console.log(err)
+		res.send('err')
+	})
+})*/
+//********************************************************************
 
 
 //检查用户名是否存在
