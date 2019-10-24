@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
-import {  } from 'antd';
+import { Row, Col } from 'antd';
 
 
 import "./index.css"
@@ -7,27 +7,86 @@ import { connect } from 'react-redux'
 import { Action } from './store'
 
 class Home extends Component{
-	constructor(props){
+	constructor(props){  
         super(props)
     }
     componentDidMount(){
-        this.props.handleCount()
+        this.props.handleInit()
     }
 	render() {
-		// const {usernum,ordernum,productnum } = this.props
-		return ;
+		const { cellNum } = this.props
+		const cellData = [...cellNum].map((value)=>{
+			return [...value]
+		})
+		// const cellData = cellNum.toJS()
+		return <div id="game-box">
+			<Row>
+				<Col span={6}>
+					<div className="cellBox">{cellData[0][0]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[0][1]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[0][2]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[0][3]}</div>
+				</Col>
+			</Row>
+			<Row>
+				<Col span={6}>
+					<div className="cellBox">{cellData[1][0]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[1][1]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[1][2]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[1][3]}</div>
+				</Col>
+			</Row>
+			<Row>
+				<Col span={6}>
+					<div className="cellBox">{cellData[2][0]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[2][1]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[2][2]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[2][3]}</div>
+				</Col>
+			</Row>
+			<Row>
+				<Col span={6}>
+					<div className="cellBox">{cellData[3][0]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[3][1]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[3][2]}</div>
+				</Col>
+				<Col span={6}>
+					<div className="cellBox">{cellData[3][3]}</div>
+				</Col>
+			</Row>
+		</div>;
 	}
 }
 
 const mapStateToProps = (state)=>({
-	usernum:state.get('home').get('usernum'),
-    ordernum:state.get('home').get('ordernum'),
-    productnum:state.get('home').get('productnum')
+	cellNum:state.get('Home').get('cellNum')
 })
 
 const mapDispatchToProps = (dispatch)=>({
-	handleCount:()=>{
-		dispatch(Action.getCountAction())
+	handleInit:()=>{
+		dispatch(Action.getInit())
 	}
 })
 

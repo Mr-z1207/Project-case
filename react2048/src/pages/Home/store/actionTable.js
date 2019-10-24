@@ -1,9 +1,8 @@
 import * as Type from './actionConstant.js'
 import { message } from 'antd'
 
-const getSetCountAction  = (data)=>({
-    type:Type.SET_COUNT,
-    payLoad:data
+const getInit  = ()=>({
+    type:Type.Init,
 })
 
-export {getCountAction}
+export { getInit }

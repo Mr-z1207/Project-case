@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux-immutable'
 
-import { reducer as LoginReducer } from 'pages/Login/store'
+import { reducer as HomeReducer } from 'pages/Home/store'
 
 export default combineReducers({
-    login:LoginReducer
+    Home:HomeReducer
 })
