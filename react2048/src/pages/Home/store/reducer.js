@@ -1,14 +1,14 @@
 import * as Type from './actionConstant.js'
 const { fromJS } = require('immutable');
 
-import { getRand } from 'util'
+import { LeftMove, RightMove, rotate, LeftHasRepeat, RightHasRepeat, createCeli } from 'util'
 
 const defaultState = fromJS({
 	cellNum:[
-		[0,0,0,0],
-		[0,0,0,0],
-		[0,0,0,0],
-		[0,0,0,0]
+		[null,null,null,null],
+		[null,null,null,null],
+		[null,null,null,null],
+		[null,null,null,null]
 	]
 })
 
@@ -18,17 +18,66 @@ export default (state=defaultState,action)=>{
 			return [...value]
 		})
 
-		let cel1 = getRand()
-		let cel2
-		do{
-			cel2 = getRand()
-		} while (cel1[0]==cel2[0] && cel1[1]==cel2[1])
-		data[cel1[0]][cel1[1]] = 2
-		data[cel2[0]][cel2[1]] = 2
+		createCeli(data)
 
-		console.log(data)
 		return state.set('cellNum',data)
-		// return state
+	}else if(action.type == Type.Left){
+		const data = [...state.get('cellNum')].map((value)=>{
+			return [...value]
+		})
+
+		var Arr1 = LeftMove(data)
+
+		var Arr2 = LeftHasRepeat(Arr1)
+		console.log("Arr2",Arr2)
+		
+		var ArrDone = LeftMove(Arr2)
+
+		console.log("ArrDone",ArrDone)
+
+		return state.set('cellNum',ArrDone)
+	}else if(action.type == Type.Top){
+		const data = [...state.get('cellNum')].map((value)=>{
+			return [...value]
+		})
+		var rotateData1 = rotate(data)
+
+		var Arr1 = LeftMove(rotateData1)
+
+		var Arr2 = LeftHasRepeat(Arr1)
+
+		var Arr3 = LeftMove(Arr2)
+
+		var ArrDone = rotate(Arr3)
+
+		return state.set('cellNum',ArrDone)
+	}else if(action.type == Type.Right){
+		const data = [...state.get('cellNum')].map((value)=>{
+			return [...value]
+		})
+		
+		var Arr1 = RightMove(data)
+
+		var Arr2 = RightHasRepeat(Arr1)
+
+		var ArrDone = RightMove(Arr2)
+
+		return state.set('cellNum',ArrDone)
+	}else if(action.type == Type.Down){
+		const data = [...state.get('cellNum')].map((value)=>{
+			return [...value]
+		})
+		var rotateData1 = rotate(data)
+
+		var Arr1 = RightMove(rotateData1)
+
+		var Arr2 = RightHasRepeat(Arr1)
+
+		var Arr3 = RightMove(Arr2)
+
+		var ArrDone = rotate(Arr3)
+
+		return state.set('cellNum',ArrDone)
 	}
     return state
 }

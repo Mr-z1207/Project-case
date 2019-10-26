@@ -9,16 +9,39 @@ import { Action } from './store'
 class Home extends Component{
 	constructor(props){  
         super(props)
+        this.handleKeyDown = this.handleKeyDown.bind(this)
     }
     componentDidMount(){
         this.props.handleInit()
+        this.props.handleInit()
+        document.addEventListener('keydown', this.handleKeyDown)
+    }
+	handleKeyDown(ev){
+		// console.log(ev.keyCode)
+		switch(ev.keyCode) {
+			case 37:
+				this.props.handleLeft()
+				this.props.handleInit()
+			break;
+			case 38:
+				this.props.handleTop()
+				this.props.handleInit()
+			break;
+			case 39:
+				this.props.handleRight()
+				this.props.handleInit()
+			break;
+			case 40:
+				this.props.handleDown()
+				this.props.handleInit()
+			break;
+		}
     }
 	render() {
 		const { cellNum } = this.props
 		const cellData = [...cellNum].map((value)=>{
 			return [...value]
 		})
-		// const cellData = cellNum.toJS()
 		return <div id="game-box">
 			<Row>
 				<Col span={6}>
@@ -87,6 +110,18 @@ const mapStateToProps = (state)=>({
 const mapDispatchToProps = (dispatch)=>({
 	handleInit:()=>{
 		dispatch(Action.getInit())
+	},
+	handleLeft:()=>{
+		dispatch(Action.getLeft())
+	},
+	handleTop:()=>{
+		dispatch(Action.getTop())
+	},
+	handleRight:()=>{
+		dispatch(Action.getRight())
+	},
+	handleDown:()=>{
+		dispatch(Action.getDown())
 	}
 })
 

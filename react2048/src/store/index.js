@@ -6,7 +6,7 @@ import { createLogger } from 'redux-logger'
 import reducer from './reducer.js'
 
 const middlewares = [thunk]
-if (process.env.NODE_ENV === `development`) {
+if (process.env.NODE_ENV === `development0`) {
     const logger = createLogger({
 
     })
