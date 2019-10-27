@@ -23,5 +23,5 @@ export {
 	getLeft,
 	getTop,
 	getRight,
-	getDown 
+	getDown
 }

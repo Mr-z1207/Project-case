@@ -39,7 +39,6 @@ const SingleRowLeftMove = (arr)=>{
 					newArr.splice(newArr.indexOf(null),0,arr[i])
 				}
 			}
-			console.log(newArr)
 		}
 		return newArr
 }
@@ -105,4 +104,33 @@ export const RightHasRepeat = (arr)=>{
 		newArr.push(RightSingleRowHasRepeat(arr[i]))
 	}
 	return newArr
+}
+
+export const getColor = ()=>{
+	var oBox = document.getElementsByClassName('cellBox')
+	for(var i = 0; i < oBox.length; i++){
+		var cellNum = oBox[i].innerHTML
+		console.log(cellNum)
+		if (cellNum == 2) {
+			oBox[i].style.backgroundColor = "#8F0"
+		}else if(cellNum == 4){
+			oBox[i].style.backgroundColor = "#F9B"
+		}else if(cellNum == 8){
+			oBox[i].style.backgroundColor = "#F50"
+		}else if(cellNum == 16){
+			oBox[i].style.backgroundColor = "#4E0"
+		}else if(cellNum == 32){
+			oBox[i].style.backgroundColor = "#0BF"
+		}else if(cellNum == 64){
+			oBox[i].style.backgroundColor = "#9F9"
+		}else if(cellNum == 128){
+			oBox[i].style.backgroundColor = "#F20"
+		}else if(cellNum == 516){
+			oBox[i].style.backgroundColor = "#F4B"
+		}else if(cellNum == 1024){
+			oBox[i].style.backgroundColor = "#02B"
+		}else if(cellNum == 2048){
+			oBox[i].style.backgroundColor = "#FF0"
+		}
+	}
 }

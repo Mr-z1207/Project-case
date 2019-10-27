@@ -29,11 +29,8 @@ export default (state=defaultState,action)=>{
 		var Arr1 = LeftMove(data)
 
 		var Arr2 = LeftHasRepeat(Arr1)
-		console.log("Arr2",Arr2)
 		
 		var ArrDone = LeftMove(Arr2)
-
-		console.log("ArrDone",ArrDone)
 
 		return state.set('cellNum',ArrDone)
 	}else if(action.type == Type.Top){

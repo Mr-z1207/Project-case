@@ -4,13 +4,13 @@
 	padding-top: 75px;
 	margin:auto;
 }
-.cellBox{
+.cellCol{
 	font-size: 48px;
 	color: #fff;
 	height: 100px;
 	line-height: 100px;
 	text-align: center;
-	background-color: #5f5;
+	background-color: #333;
 	border: 3px solid #fff;
 	box-sizing: border-box;
 }
