@@ -1,7 +1,7 @@
 import * as Type from './actionConstant.js'
 const { fromJS } = require('immutable');
 
-import { LeftMove, RightMove, rotate, LeftHasRepeat, RightHasRepeat, createCeli } from 'util'
+import { LeftMove, RightMove, rotate, LeftHasRepeat, RightHasRepeat, createCeli, isOver } from 'util'
 
 const defaultState = fromJS({
 	cellNum:[
@@ -9,7 +9,8 @@ const defaultState = fromJS({
 		[null,null,null,null],
 		[null,null,null,null],
 		[null,null,null,null]
-	]
+	],
+	isOver:false
 })
 
 export default (state=defaultState,action)=>{
@@ -20,7 +21,13 @@ export default (state=defaultState,action)=>{
 
 		createCeli(data)
 
-		return state.set('cellNum',data)
+		console.log(data)
+		const isOverData = isOver(data)
+
+		return state.merge({
+			cellNum:data,
+			isOver:isOverData
+		})
 	}else if(action.type == Type.Left){
 		const data = [...state.get('cellNum')].map((value)=>{
 			return [...value]

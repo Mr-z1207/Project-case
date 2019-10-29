@@ -110,7 +110,6 @@ export const getColor = ()=>{
 	var oBox = document.getElementsByClassName('cellBox')
 	for(var i = 0; i < oBox.length; i++){
 		var cellNum = oBox[i].innerHTML
-		console.log(cellNum)
 		if (cellNum == 2) {
 			oBox[i].style.backgroundColor = "#8F0"
 		}else if(cellNum == 4){
@@ -132,5 +131,61 @@ export const getColor = ()=>{
 		}else if(cellNum == 2048){
 			oBox[i].style.backgroundColor = "#FF0"
 		}
+	}
+}
+
+const HasNull = (arr)=>{
+	var isNull = false
+	for(var i = 0; i < arr.length; i++){
+		for(var j = 0; j < arr[i].length; j++){
+			if (arr[i][j] == null) {
+				isNull = true
+			}
+		}
+	}
+	return isNull
+}
+const SingleRowRepeat = (arr)=>{
+	var isRepeat = false
+	for(var i = 1; i < arr.length;i++){
+		if (arr[i] == arr[i-1] && arr[i] != null) {
+			isRepeat = true
+			break;
+		}
+	}
+	return isRepeat
+}
+const ColRepeat = (arr)=>{
+	var isRepeat
+	for(var i = 0; i < arr.length; i++){
+		isRepeat = SingleRowRepeat(arr[i])
+		if (isRepeat) {
+			break;
+		}
+	}
+	return isRepeat
+}
+
+const RowRepeat = (arr)=>{
+	var isRepeat
+	var newArr = rotate(arr)
+	for(var i = 0; i < newArr.length; i++){
+		isRepeat = SingleRowRepeat(newArr[i])
+		if (isRepeat) {
+			break;
+		}
+	}
+	return isRepeat
+}
+
+export const isOver = (arr)=>{
+	console.log(RowRepeat(arr))
+	console.log(ColRepeat(arr))
+	if (HasNull(arr)) {
+		return false
+	}else if (RowRepeat(arr) || ColRepeat(arr)) {
+		return false
+	}else{
+		return true
 	}
 }

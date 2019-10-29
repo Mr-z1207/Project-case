@@ -30,8 +30,11 @@ class Home extends Component{
 		}
 	}
 
-	componentDidUpdate(){
+	componentDidUpdate(prop){
 		getColor()
+		if(this.props.isOver){
+			alert('Game Over 请刷新')
+		}
 	}
 
 	handleKeyDown(ev){
@@ -39,25 +42,36 @@ class Home extends Component{
 		switch(ev.keyCode) {
 			case 37:
 				this.props.handleLeft()
-				// this.props.handleInit()
+				if (this.isRe) {
+					setTimeout(function() {
+						this.props.handleInit()
+					}.bind(this),200)
+				}
 			break;
 			case 38:
 				this.props.handleTop()
-				// this.props.handleInit()
+				if (this.isRe) {
+					setTimeout(function() {
+						this.props.handleInit()
+					}.bind(this),200)
+				}
 			break;
 			case 39:
 				this.props.handleRight()
-				// this.props.handleInit()
+				if (this.isRe) {
+					setTimeout(function() {
+						this.props.handleInit()
+					}.bind(this),200)
+				}
 			break;
 			case 40:
 				this.props.handleDown()
-				// this.props.handleInit()
+				if (this.isRe) {
+					setTimeout(function() {
+						this.props.handleInit()
+					}.bind(this),200)
+				}
 			break;
-		}
-		if (this.isRe) {
-			setTimeout(function() {
-				this.props.handleInit()
-			}.bind(this),200)
 		}
     }
 	render() {
@@ -127,7 +141,8 @@ class Home extends Component{
 }
 
 const mapStateToProps = (state)=>({
-	cellNum:state.get('Home').get('cellNum')
+	cellNum:state.get('Home').get('cellNum'),
+	isOver:state.get('Home').get('isOver')
 })
 
 const mapDispatchToProps = (dispatch)=>({
