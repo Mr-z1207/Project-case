@@ -19,7 +19,7 @@ module.exports = {
     output: {
         //「入口分块(entry chunk)」的文件名模板
         // filename: '[name]-[chunkhash]-bundle.js',
-        filename: '[name]-[hash]-bundle.js',
+        filename: '[name]-bundle.js',
         //指定输出参考根路径
         publicPath:'/',
         //所有输出文件的目标路径
@@ -107,7 +107,7 @@ module.exports = {
             template:'./src/index.html',//模板文件
             filename:'index.html',//输出的文件名
             //inject:'head',//脚本写在那个标签里,默认是true(在body结束后)
-            hash:true,//给生成的js/css文件添加一个唯一的hash
+            // hash:true,//给生成的js/css文件添加一个唯一的hash
         })
     ],
     devServer: {
