@@ -6,8 +6,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     //指定环境
-    mode:'development',
-    // mode:'production',
+    // mode:'development',
+    mode:'production',
     //单一入口
     // entry: './src/index.js',
     // entry: {main:'./src/index.js'},
