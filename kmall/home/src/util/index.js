@@ -12,5 +12,8 @@ module.exports = {
         if(type == 'password'){
             return /^\w{3,6}$/.test(value)
         }                           
-    }
+    },
+    goLogin:function(){
+        window.location.href = '/user-login.html?redirect='+encodeURIComponent(window.location.href)
+    },
 }

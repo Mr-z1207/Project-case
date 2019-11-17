@@ -7,7 +7,7 @@ export const API_CONFIG = {
     logout:                         ['/sessions/users','delete'],
     getHomeData:                    ['/counts','get'],
     getUserData:                    ['/users/list','get'],
-    addCategories:                  [	'/categories','post'],
+    addCategories:                  ['/categories','post'],
     getlevelCategories:             ['/categories/levelCategories','get'],
     getCategoriesList:              ['/categories/list','get'],
     updateCategoriesName:           ['/categories/name','put'],

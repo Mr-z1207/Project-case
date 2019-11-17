@@ -4,6 +4,7 @@ require('pages/common/logo')
 require('./index.css')
 
 var _util = require('util')
+var api = require('api')
 
 var formErr = {
     hide: function() {
@@ -48,7 +49,7 @@ var page = {
 		if (validateResult.state) {
 			formErr.hide()
 			// 3、提交数据
-			$.ajax({
+			/*$.ajax({
 				url:"/sessions/users",
 				method:"post",
 				data:formData,
@@ -62,6 +63,15 @@ var page = {
 				},
 				error:function(err){
 					formErr.show('网络错误，请稍后再试')
+				}
+			})*/
+			api.login({
+				data:formData,
+				success:(result)=>{
+					window.location.href = "/"
+				},
+				error:(err)=>{
+					formErr.show(err)
 				}
 			})
 		}else{
