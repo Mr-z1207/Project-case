@@ -7,7 +7,7 @@ const session = require('express-session')
 const MongoStore = require("connect-mongo")(session)
 //*************************************************************************
 const app = express()
-const port = 3000
+const port = 80
 //*************************************************************************
 //1.连接数据库
 mongoose.connect('mongodb://localhost/blog', { useNewUrlParser: true })

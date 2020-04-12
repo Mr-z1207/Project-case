@@ -1,8 +1,8 @@
 /*
 * @Author: TomChen
 * @Date:   2019-08-08 16:30:19
-* @Last Modified by:   TomChen
-* @Last Modified time: 2019-08-14 17:00:18
+ * @Last Modified by: Mr-z1207
+ * @Last Modified time: 2020-04-12 19:13:52
 */
 
 const path = require('path')
@@ -58,7 +58,7 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                         }
-                     },
+                    },
                     "css-loader"
                 ]
             },
